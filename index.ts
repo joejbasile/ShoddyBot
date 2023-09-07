@@ -34,7 +34,6 @@ function getRandomInt(max: number) {
 
 async function processMessage(message: any) {
     let userMessageWordsList: Array<string> = message.content.replace(/[^a-zA-Z0-9]+/g, " ").trim().split(' ');
-    console.log(userMessageWordsList);
     let returnMessage: Array<string> = [];
     for (let originalMessageWordIndex: number = 0; originalMessageWordIndex < userMessageWordsList.length; originalMessageWordIndex++) {
         const originalMessageElementAtIndex = userMessageWordsList[originalMessageWordIndex];
