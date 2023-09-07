@@ -64,8 +64,7 @@ async function processMessage(message: any) {
                                             returnMessage[originalMessageWordIndex] = originalMessageElementAtIndex;
                                             lengthOfBuiltMessage++;
                                             break;
-                                        }
-                                        else {
+                                        } else {
                                             let randomSynonymIndex: number = getRandomInt(synonymsOfWord.length);
                                             if(synonymsOfWord[randomSynonymIndex] !== undefined && synonymsOfWord[randomSynonymIndex] !== '') {
                                                 let synonym: string = synonymsOfWord[randomSynonymIndex];
