@@ -22,7 +22,7 @@ client.on('messageCreate', async (message) => {
     let lastMessages = await message.channel.messages.fetch({ limit: 2 });
     // this is the last message sent before this command
     let previousMessage = lastMessages.last();
-    if(message.author.bot === false && createMessageState === true && message.content == 'bump') {
+    if(message.author.bot === false && createMessageState === true && message.content === 'bump'.toLocaleLowerCase()) {
         createMessageState = false;
         processMessage(previousMessage);
     }
@@ -54,8 +54,8 @@ async function processMessage(message: any) {
                 if(lengthOfBuiltMessage < returnMessage.length) {
                     let word: any = data[dataIterator];
                     try {
-                        if(word['word'] !== undefined && word['word'] === originalMessageElementAtIndex.toLowerCase()) {
-                            if(word['meanings'] !== undefined || word['meanings'].length !== 0) {
+                        if(word['word'] != undefined && word['word'] === originalMessageElementAtIndex.toLowerCase()) {
+                            if(word['meanings'] != undefined || word['meanings'].length !== 0) {
                                 for (const key in word['meanings']) {
                                     if (Object.prototype.hasOwnProperty.call(word['meanings'], key)) {
                                         let synonymsOfWord: Array<string> = word['meanings'][key]['synonyms'];
@@ -65,11 +65,11 @@ async function processMessage(message: any) {
                                             break;
                                         } else {
                                             let randomSynonymIndex: number = getRandomInt(synonymsOfWord.length);
-                                            if(synonymsOfWord[randomSynonymIndex] !== undefined && synonymsOfWord[randomSynonymIndex] !== '') {
+                                            if(synonymsOfWord[randomSynonymIndex] != undefined && synonymsOfWord[randomSynonymIndex] !== '') {
                                                 let synonym: string = synonymsOfWord[randomSynonymIndex];
-                                                if (synonym !== undefined || synonym !== '') {
-                                                    lengthOfBuiltMessage++;
+                                                if (synonym != undefined || synonym !== '') {
                                                     returnMessage[originalMessageWordIndex] = synonym;
+                                                    lengthOfBuiltMessage++;
                                                     break;
                                                 }
                                             }
@@ -86,8 +86,9 @@ async function processMessage(message: any) {
                 }
             }
         } else {
-            lengthOfBuiltMessage++;
             returnMessage[originalMessageWordIndex] = originalMessageElementAtIndex;
+            lengthOfBuiltMessage++;
+            break;
         }
     }
     let returnString: string = '';
