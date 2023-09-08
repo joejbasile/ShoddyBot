@@ -88,7 +88,6 @@ async function processMessage(message: any) {
         } else {
             returnMessage[originalMessageWordIndex] = originalMessageElementAtIndex;
             lengthOfBuiltMessage++;
-            break;
         }
     }
     let returnString: string = '';
