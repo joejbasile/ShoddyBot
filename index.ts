@@ -93,7 +93,7 @@ async function processMessage(message: any) {
     let returnString: string = '';
     returnString = returnMessage.join(' ').toString();
     if(returnString !== '') {
-        message.channel.send('Sounds like ' + message.author.username + ' is having some trouble with their words. I\'ll translate. This is what they\'re really trying to say: \n\t' + returnString);
+        message.channel.send('Sounds like ' + message.author.username + ' is having some trouble with their words. I will translate. This is what they\'re really trying to say: \n\t' + returnString);
     }
     createMessageState = true;
 }
