@@ -22,7 +22,7 @@ client.on('messageCreate', async (message) => {
     let lastMessages = await message.channel.messages.fetch({ limit: 2 });
     // this is the last message sent before this command
     let previousMessage = lastMessages.last();
-    if(message.author.bot === false && createMessageState === true && message.content === 'bump'.toLocaleLowerCase()) {
+    if(message.author.bot === false && createMessageState === true && message.content.toLocaleLowerCase() == 'bump') {
         createMessageState = false;
         processMessage(previousMessage);
     }
@@ -93,7 +93,7 @@ async function processMessage(message: any) {
     let returnString: string = '';
     returnString = returnMessage.join(' ').toString();
     if(returnString !== '') {
-        message.channel.send('Sounds like ' + message.author.username + ' is having some trouble with their words. I will translate. This is what they\'re really trying to say: \n\t' + returnString);
+        message.channel.send('Sounds like ' + message.author.username + ' is having some trouble with their words. I will translate. This is what they\'re really trying to say: \n\n\t' + returnString);
     }
     createMessageState = true;
 }
